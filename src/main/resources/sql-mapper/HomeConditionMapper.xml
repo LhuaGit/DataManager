@@ -1,0 +1,1325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manager.dao.HomeConditionMapper">
+    <resultMap id="BaseResultMap" type="com.manager.model.HomeCondition">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="neighborhood" jdbcType="VARCHAR" property="neighborhood"/>
+        <result column="num" jdbcType="INTEGER" property="num"/>
+        <result column="registry_address" jdbcType="VARCHAR" property="registryAddress"/>
+        <result column="registry_condition" jdbcType="VARCHAR" property="registryCondition"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="live_address" jdbcType="VARCHAR" property="liveAddress"/>
+        <result column="difficut" jdbcType="VARCHAR" property="difficut"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="low" jdbcType="VARCHAR" property="low"/>
+        <result column="low_money" jdbcType="VARCHAR" property="lowMoney"/>
+        <result column="low_in" jdbcType="VARCHAR" property="lowIn"/>
+        <result column="spec_ poor" jdbcType="VARCHAR" property="specPoor"/>
+        <result column="spec_poor_money" jdbcType="VARCHAR" property="specPoorMoney"/>
+        <result column="spec_poor_out" jdbcType="VARCHAR" property="specPoorOut"/>
+        <result column="poor_child" jdbcType="VARCHAR" property="poorChild"/>
+        <result column="poor_child_money" jdbcType="VARCHAR" property="poorChildMoney"/>
+        <result column="disabled_man" jdbcType="VARCHAR" property="disabledMan"/>
+        <result column="disabled_man_money" jdbcType="VARCHAR" property="disabledManMoney"/>
+        <result column="low_rent" jdbcType="VARCHAR" property="lowRent"/>
+        <result column="low_rent_money" jdbcType="VARCHAR" property="lowRentMoney"/>
+        <result column="own_house" jdbcType="VARCHAR" property="ownHouse"/>
+        <result column="own_out_house" jdbcType="VARCHAR" property="ownOutHouse"/>
+        <result column="own_car" jdbcType="VARCHAR" property="ownCar"/>
+        <result column="inquire_goal" jdbcType="VARCHAR" property="inquireGoal"/>
+        <result column="inquire_condition" jdbcType="VARCHAR" property="inquireCondition"/>
+        <result column="operate_name" jdbcType="VARCHAR" property="operateName"/>
+        <result column="insert_user_id" jdbcType="INTEGER" property="insertUserId"/>
+        <result column="created" jdbcType="TIMESTAMP" property="created"/>
+        <result column="modified" jdbcType="TIMESTAMP" property="modified"/>
+        <result column="enbale" jdbcType="INTEGER" property="enbale"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, neighborhood, num, registry_address, registry_condition, phone, live_address, 
+    difficut, type, low, low_money, low_in, "spec_ poor", spec_poor_money, spec_poor_out, 
+    poor_child, poor_child_money, disabled_man, disabled_man_money, low_rent, low_rent_money, 
+    own_house, own_out_house, own_car, inquire_goal, inquire_condition, operate_name, 
+    insert_user_id, created, modified, enbale
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from home_condition
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from home_condition
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.manager.model.HomeCondition">
+    insert into home_condition (id, neighborhood, num, 
+      registry_address, registry_condition, phone, 
+      live_address, difficut, type, 
+      low, low_money, low_in, 
+      "spec_ poor", spec_poor_money, spec_poor_out, 
+      poor_child, poor_child_money, disabled_man, 
+      disabled_man_money, low_rent, low_rent_money, 
+      own_house, own_out_house, own_car, 
+      inquire_goal, inquire_condition, operate_name, 
+      insert_user_id, created, modified, 
+      enbale)
+    values (#{id,jdbcType=INTEGER}, #{neighborhood,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, 
+      #{registryAddress,jdbcType=VARCHAR}, #{registryCondition,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{liveAddress,jdbcType=VARCHAR}, #{difficut,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{low,jdbcType=VARCHAR}, #{lowMoney,jdbcType=VARCHAR}, #{lowIn,jdbcType=VARCHAR}, 
+      #{specPoor,jdbcType=VARCHAR}, #{specPoorMoney,jdbcType=VARCHAR}, #{specPoorOut,jdbcType=VARCHAR}, 
+      #{poorChild,jdbcType=VARCHAR}, #{poorChildMoney,jdbcType=VARCHAR}, #{disabledMan,jdbcType=VARCHAR}, 
+      #{disabledManMoney,jdbcType=VARCHAR}, #{lowRent,jdbcType=VARCHAR}, #{lowRentMoney,jdbcType=VARCHAR}, 
+      #{ownHouse,jdbcType=VARCHAR}, #{ownOutHouse,jdbcType=VARCHAR}, #{ownCar,jdbcType=VARCHAR}, 
+      #{inquireGoal,jdbcType=VARCHAR}, #{inquireCondition,jdbcType=VARCHAR}, #{operateName,jdbcType=VARCHAR}, 
+      #{insertUserId,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{modified,jdbcType=TIMESTAMP}, 
+      #{enbale,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.manager.model.HomeCondition">
+        insert into home_condition
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="neighborhood != null">
+                neighborhood,
+            </if>
+            <if test="num != null">
+                num,
+            </if>
+            <if test="registryAddress != null">
+                registry_address,
+            </if>
+            <if test="registryCondition != null">
+                registry_condition,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="liveAddress != null">
+                live_address,
+            </if>
+            <if test="difficut != null">
+                difficut,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="low != null">
+                low,
+            </if>
+            <if test="lowMoney != null">
+                low_money,
+            </if>
+            <if test="lowIn != null">
+                low_in,
+            </if>
+            <if test="specPoor != null">
+                "spec_ poor",
+            </if>
+            <if test="specPoorMoney != null">
+                spec_poor_money,
+            </if>
+            <if test="specPoorOut != null">
+                spec_poor_out,
+            </if>
+            <if test="poorChild != null">
+                poor_child,
+            </if>
+            <if test="poorChildMoney != null">
+                poor_child_money,
+            </if>
+            <if test="disabledMan != null">
+                disabled_man,
+            </if>
+            <if test="disabledManMoney != null">
+                disabled_man_money,
+            </if>
+            <if test="lowRent != null">
+                low_rent,
+            </if>
+            <if test="lowRentMoney != null">
+                low_rent_money,
+            </if>
+            <if test="ownHouse != null">
+                own_house,
+            </if>
+            <if test="ownOutHouse != null">
+                own_out_house,
+            </if>
+            <if test="ownCar != null">
+                own_car,
+            </if>
+            <if test="inquireGoal != null">
+                inquire_goal,
+            </if>
+            <if test="inquireCondition != null">
+                inquire_condition,
+            </if>
+            <if test="operateName != null">
+                operate_name,
+            </if>
+            <if test="insertUserId != null">
+                insert_user_id,
+            </if>
+            <if test="created != null">
+                created,
+            </if>
+            <if test="modified != null">
+                modified,
+            </if>
+            <if test="enbale != null">
+                enbale,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="neighborhood != null">
+                #{neighborhood,jdbcType=VARCHAR},
+            </if>
+            <if test="num != null">
+                #{num,jdbcType=INTEGER},
+            </if>
+            <if test="registryAddress != null">
+                #{registryAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="registryCondition != null">
+                #{registryCondition,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="liveAddress != null">
+                #{liveAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="difficut != null">
+                #{difficut,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="low != null">
+                #{low,jdbcType=VARCHAR},
+            </if>
+            <if test="lowMoney != null">
+                #{lowMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="lowIn != null">
+                #{lowIn,jdbcType=VARCHAR},
+            </if>
+            <if test="specPoor != null">
+                #{specPoor,jdbcType=VARCHAR},
+            </if>
+            <if test="specPoorMoney != null">
+                #{specPoorMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="specPoorOut != null">
+                #{specPoorOut,jdbcType=VARCHAR},
+            </if>
+            <if test="poorChild != null">
+                #{poorChild,jdbcType=VARCHAR},
+            </if>
+            <if test="poorChildMoney != null">
+                #{poorChildMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="disabledMan != null">
+                #{disabledMan,jdbcType=VARCHAR},
+            </if>
+            <if test="disabledManMoney != null">
+                #{disabledManMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="lowRent != null">
+                #{lowRent,jdbcType=VARCHAR},
+            </if>
+            <if test="lowRentMoney != null">
+                #{lowRentMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="ownHouse != null">
+                #{ownHouse,jdbcType=VARCHAR},
+            </if>
+            <if test="ownOutHouse != null">
+                #{ownOutHouse,jdbcType=VARCHAR},
+            </if>
+            <if test="ownCar != null">
+                #{ownCar,jdbcType=VARCHAR},
+            </if>
+            <if test="inquireGoal != null">
+                #{inquireGoal,jdbcType=VARCHAR},
+            </if>
+            <if test="inquireCondition != null">
+                #{inquireCondition,jdbcType=VARCHAR},
+            </if>
+            <if test="operateName != null">
+                #{operateName,jdbcType=VARCHAR},
+            </if>
+            <if test="insertUserId != null">
+                #{insertUserId,jdbcType=INTEGER},
+            </if>
+            <if test="created != null">
+                #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modified != null">
+                #{modified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enbale != null">
+                #{enbale,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.manager.model.HomeCondition">
+        update home_condition
+        <set>
+            <if test="neighborhood != null">
+                neighborhood = #{neighborhood,jdbcType=VARCHAR},
+            </if>
+            <if test="num != null">
+                num = #{num,jdbcType=INTEGER},
+            </if>
+            <if test="registryAddress != null">
+                registry_address = #{registryAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="registryCondition != null">
+                registry_condition = #{registryCondition,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="liveAddress != null">
+                live_address = #{liveAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="difficut != null">
+                difficut = #{difficut,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="low != null">
+                low = #{low,jdbcType=VARCHAR},
+            </if>
+            <if test="lowMoney != null">
+                low_money = #{lowMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="lowIn != null">
+                low_in = #{lowIn,jdbcType=VARCHAR},
+            </if>
+            <if test="specPoor != null">
+                "spec_ poor" = #{specPoor,jdbcType=VARCHAR},
+            </if>
+            <if test="specPoorMoney != null">
+                spec_poor_money = #{specPoorMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="specPoorOut != null">
+                spec_poor_out = #{specPoorOut,jdbcType=VARCHAR},
+            </if>
+            <if test="poorChild != null">
+                poor_child = #{poorChild,jdbcType=VARCHAR},
+            </if>
+            <if test="poorChildMoney != null">
+                poor_child_money = #{poorChildMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="disabledMan != null">
+                disabled_man = #{disabledMan,jdbcType=VARCHAR},
+            </if>
+            <if test="disabledManMoney != null">
+                disabled_man_money = #{disabledManMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="lowRent != null">
+                low_rent = #{lowRent,jdbcType=VARCHAR},
+            </if>
+            <if test="lowRentMoney != null">
+                low_rent_money = #{lowRentMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="ownHouse != null">
+                own_house = #{ownHouse,jdbcType=VARCHAR},
+            </if>
+            <if test="ownOutHouse != null">
+                own_out_house = #{ownOutHouse,jdbcType=VARCHAR},
+            </if>
+            <if test="ownCar != null">
+                own_car = #{ownCar,jdbcType=VARCHAR},
+            </if>
+            <if test="inquireGoal != null">
+                inquire_goal = #{inquireGoal,jdbcType=VARCHAR},
+            </if>
+            <if test="inquireCondition != null">
+                inquire_condition = #{inquireCondition,jdbcType=VARCHAR},
+            </if>
+            <if test="operateName != null">
+                operate_name = #{operateName,jdbcType=VARCHAR},
+            </if>
+            <if test="insertUserId != null">
+                insert_user_id = #{insertUserId,jdbcType=INTEGER},
+            </if>
+            <if test="created != null">
+                created = #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modified != null">
+                modified = #{modified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enbale != null">
+                enbale = #{enbale,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.manager.model.HomeCondition">
+    update home_condition
+    set neighborhood = #{neighborhood,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      registry_address = #{registryAddress,jdbcType=VARCHAR},
+      registry_condition = #{registryCondition,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      live_address = #{liveAddress,jdbcType=VARCHAR},
+      difficut = #{difficut,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      low = #{low,jdbcType=VARCHAR},
+      low_money = #{lowMoney,jdbcType=VARCHAR},
+      low_in = #{lowIn,jdbcType=VARCHAR},
+      "spec_ poor" = #{specPoor,jdbcType=VARCHAR},
+      spec_poor_money = #{specPoorMoney,jdbcType=VARCHAR},
+      spec_poor_out = #{specPoorOut,jdbcType=VARCHAR},
+      poor_child = #{poorChild,jdbcType=VARCHAR},
+      poor_child_money = #{poorChildMoney,jdbcType=VARCHAR},
+      disabled_man = #{disabledMan,jdbcType=VARCHAR},
+      disabled_man_money = #{disabledManMoney,jdbcType=VARCHAR},
+      low_rent = #{lowRent,jdbcType=VARCHAR},
+      low_rent_money = #{lowRentMoney,jdbcType=VARCHAR},
+      own_house = #{ownHouse,jdbcType=VARCHAR},
+      own_out_house = #{ownOutHouse,jdbcType=VARCHAR},
+      own_car = #{ownCar,jdbcType=VARCHAR},
+      inquire_goal = #{inquireGoal,jdbcType=VARCHAR},
+      inquire_condition = #{inquireCondition,jdbcType=VARCHAR},
+      operate_name = #{operateName,jdbcType=VARCHAR},
+      insert_user_id = #{insertUserId,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      modified = #{modified,jdbcType=TIMESTAMP},
+      enbale = #{enbale,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <resultMap id="BaseResultMap" type="com.manager.model.HomeCondition">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="idcard" jdbcType="VARCHAR" property="idcard"/>
+        <result column="birthday" jdbcType="TIMESTAMP" property="birthday"/>
+        <result column="relation" jdbcType="VARCHAR" property="relation"/>
+        <result column="registry_quality" jdbcType="VARCHAR" property="registryQuality"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="leave" jdbcType="VARCHAR" property="leave"/>
+        <result column="education" jdbcType="VARCHAR" property="education"/>
+        <result column="nation" jdbcType="VARCHAR" property="nation"/>
+        <result column="registry_address" jdbcType="VARCHAR" property="registryAddress"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="live_address" jdbcType="VARCHAR" property="liveAddress"/>
+        <result column="marriage" jdbcType="VARCHAR" property="marriage"/>
+        <result column="job" jdbcType="VARCHAR" property="job"/>
+        <result column="job_address" jdbcType="VARCHAR" property="jobAddress"/>
+        <result column="student" jdbcType="VARCHAR" property="student"/>
+        <result column="school_address" jdbcType="VARCHAR" property="schoolAddress"/>
+        <result column="assistance_couple" jdbcType="VARCHAR" property="assistanceCouple"/>
+        <result column="couple_name" jdbcType="VARCHAR" property="coupleName"/>
+        <result column="couple_money" jdbcType="VARCHAR" property="coupleMoney"/>
+        <result column="people_type" jdbcType="VARCHAR" property="peopleType"/>
+        <result column="home_name" jdbcType="VARCHAR" property="homeName"/>
+        <result column="home_man" jdbcType="VARCHAR" property="homeMan"/>
+        <result column="in_money" jdbcType="VARCHAR" property="inMoney"/>
+        <result column="work_money" jdbcType="VARCHAR" property="workMoney"/>
+        <result column="old_money" jdbcType="VARCHAR" property="oldMoney"/>
+        <result column="enjoy" jdbcType="VARCHAR" property="enjoy"/>
+        <result column="health_insurance" jdbcType="VARCHAR" property="healthInsurance"/>
+        <result column="home_insurance" jdbcType="VARCHAR" property="homeInsurance"/>
+        <result column="help_insurance" jdbcType="VARCHAR" property="helpInsurance"/>
+        <result column="work_old_insurance" jdbcType="VARCHAR" property="workOldInsurance"/>
+        <result column="health" jdbcType="VARCHAR" property="health"/>
+        <result column="big_ sickness" jdbcType="VARCHAR" property="bigSickness"/>
+        <result column="poor_health" jdbcType="VARCHAR" property="poorHealth"/>
+        <result column="poor_rank" jdbcType="VARCHAR" property="poorRank"/>
+        <result column="home_condition_id" jdbcType="INTEGER" property="homeConditionId"/>
+        <result column="operate_name" jdbcType="VARCHAR" property="operateName"/>
+        <result column="insert_user_id" jdbcType="INTEGER" property="insertUserId"/>
+        <result column="created" jdbcType="TIMESTAMP" property="created"/>
+        <result column="modified" jdbcType="TIMESTAMP" property="modified"/>
+        <result column="enable" jdbcType="INTEGER" property="enable"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, name, idcard, birthday, relation, registry_quality, sex, leave, education, nation, 
+    registry_address, phone, live_address, marriage, job, job_address, student, school_address, 
+    assistance_couple, couple_name, couple_money, people_type, home_name, home_man, in_money, 
+    work_money, old_money, enjoy, health_insurance, home_insurance, help_insurance, work_old_insurance, 
+    health, "big_ sickness", poor_health, poor_rank, home_condition_id, operate_name, 
+    insert_user_id, created, modified, enable
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from people_condition
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from people_condition
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.manager.model.HomeCondition">
+    insert into people_condition (id, name, idcard, 
+      birthday, relation, registry_quality, 
+      sex, leave, education, 
+      nation, registry_address, phone, 
+      live_address, marriage, job, 
+      job_address, student, school_address, 
+      assistance_couple, couple_name, couple_money, 
+      people_type, home_name, home_man, 
+      in_money, work_money, old_money, 
+      enjoy, health_insurance, home_insurance, 
+      help_insurance, work_old_insurance, health, 
+      "big_ sickness", poor_health, poor_rank, 
+      home_condition_id, operate_name, insert_user_id, 
+      created, modified, enable
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{relation,jdbcType=VARCHAR}, #{registryQuality,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{leave,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
+      #{nation,jdbcType=VARCHAR}, #{registryAddress,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{liveAddress,jdbcType=VARCHAR}, #{marriage,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
+      #{jobAddress,jdbcType=VARCHAR}, #{student,jdbcType=VARCHAR}, #{schoolAddress,jdbcType=VARCHAR}, 
+      #{assistanceCouple,jdbcType=VARCHAR}, #{coupleName,jdbcType=VARCHAR}, #{coupleMoney,jdbcType=VARCHAR}, 
+      #{peopleType,jdbcType=VARCHAR}, #{homeName,jdbcType=VARCHAR}, #{homeMan,jdbcType=VARCHAR}, 
+      #{inMoney,jdbcType=VARCHAR}, #{workMoney,jdbcType=VARCHAR}, #{oldMoney,jdbcType=VARCHAR}, 
+      #{enjoy,jdbcType=VARCHAR}, #{healthInsurance,jdbcType=VARCHAR}, #{homeInsurance,jdbcType=VARCHAR}, 
+      #{helpInsurance,jdbcType=VARCHAR}, #{workOldInsurance,jdbcType=VARCHAR}, #{health,jdbcType=VARCHAR}, 
+      #{bigSickness,jdbcType=VARCHAR}, #{poorHealth,jdbcType=VARCHAR}, #{poorRank,jdbcType=VARCHAR}, 
+      #{homeConditionId,jdbcType=INTEGER}, #{operateName,jdbcType=VARCHAR}, #{insertUserId,jdbcType=INTEGER}, 
+      #{created,jdbcType=TIMESTAMP}, #{modified,jdbcType=TIMESTAMP}, #{enable,jdbcType=INTEGER}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.manager.model.HomeCondition">
+        insert into people_condition
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="idcard != null">
+                idcard,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="relation != null">
+                relation,
+            </if>
+            <if test="registryQuality != null">
+                registry_quality,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="leave != null">
+                leave,
+            </if>
+            <if test="education != null">
+                education,
+            </if>
+            <if test="nation != null">
+                nation,
+            </if>
+            <if test="registryAddress != null">
+                registry_address,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="liveAddress != null">
+                live_address,
+            </if>
+            <if test="marriage != null">
+                marriage,
+            </if>
+            <if test="job != null">
+                job,
+            </if>
+            <if test="jobAddress != null">
+                job_address,
+            </if>
+            <if test="student != null">
+                student,
+            </if>
+            <if test="schoolAddress != null">
+                school_address,
+            </if>
+            <if test="assistanceCouple != null">
+                assistance_couple,
+            </if>
+            <if test="coupleName != null">
+                couple_name,
+            </if>
+            <if test="coupleMoney != null">
+                couple_money,
+            </if>
+            <if test="peopleType != null">
+                people_type,
+            </if>
+            <if test="homeName != null">
+                home_name,
+            </if>
+            <if test="homeMan != null">
+                home_man,
+            </if>
+            <if test="inMoney != null">
+                in_money,
+            </if>
+            <if test="workMoney != null">
+                work_money,
+            </if>
+            <if test="oldMoney != null">
+                old_money,
+            </if>
+            <if test="enjoy != null">
+                enjoy,
+            </if>
+            <if test="healthInsurance != null">
+                health_insurance,
+            </if>
+            <if test="homeInsurance != null">
+                home_insurance,
+            </if>
+            <if test="helpInsurance != null">
+                help_insurance,
+            </if>
+            <if test="workOldInsurance != null">
+                work_old_insurance,
+            </if>
+            <if test="health != null">
+                health,
+            </if>
+            <if test="bigSickness != null">
+                "big_ sickness",
+            </if>
+            <if test="poorHealth != null">
+                poor_health,
+            </if>
+            <if test="poorRank != null">
+                poor_rank,
+            </if>
+            <if test="homeConditionId != null">
+                home_condition_id,
+            </if>
+            <if test="operateName != null">
+                operate_name,
+            </if>
+            <if test="insertUserId != null">
+                insert_user_id,
+            </if>
+            <if test="created != null">
+                created,
+            </if>
+            <if test="modified != null">
+                modified,
+            </if>
+            <if test="enable != null">
+                enable,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="idcard != null">
+                #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="relation != null">
+                #{relation,jdbcType=VARCHAR},
+            </if>
+            <if test="registryQuality != null">
+                #{registryQuality,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="leave != null">
+                #{leave,jdbcType=VARCHAR},
+            </if>
+            <if test="education != null">
+                #{education,jdbcType=VARCHAR},
+            </if>
+            <if test="nation != null">
+                #{nation,jdbcType=VARCHAR},
+            </if>
+            <if test="registryAddress != null">
+                #{registryAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="liveAddress != null">
+                #{liveAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="marriage != null">
+                #{marriage,jdbcType=VARCHAR},
+            </if>
+            <if test="job != null">
+                #{job,jdbcType=VARCHAR},
+            </if>
+            <if test="jobAddress != null">
+                #{jobAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="student != null">
+                #{student,jdbcType=VARCHAR},
+            </if>
+            <if test="schoolAddress != null">
+                #{schoolAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="assistanceCouple != null">
+                #{assistanceCouple,jdbcType=VARCHAR},
+            </if>
+            <if test="coupleName != null">
+                #{coupleName,jdbcType=VARCHAR},
+            </if>
+            <if test="coupleMoney != null">
+                #{coupleMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="peopleType != null">
+                #{peopleType,jdbcType=VARCHAR},
+            </if>
+            <if test="homeName != null">
+                #{homeName,jdbcType=VARCHAR},
+            </if>
+            <if test="homeMan != null">
+                #{homeMan,jdbcType=VARCHAR},
+            </if>
+            <if test="inMoney != null">
+                #{inMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="workMoney != null">
+                #{workMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="oldMoney != null">
+                #{oldMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="enjoy != null">
+                #{enjoy,jdbcType=VARCHAR},
+            </if>
+            <if test="healthInsurance != null">
+                #{healthInsurance,jdbcType=VARCHAR},
+            </if>
+            <if test="homeInsurance != null">
+                #{homeInsurance,jdbcType=VARCHAR},
+            </if>
+            <if test="helpInsurance != null">
+                #{helpInsurance,jdbcType=VARCHAR},
+            </if>
+            <if test="workOldInsurance != null">
+                #{workOldInsurance,jdbcType=VARCHAR},
+            </if>
+            <if test="health != null">
+                #{health,jdbcType=VARCHAR},
+            </if>
+            <if test="bigSickness != null">
+                #{bigSickness,jdbcType=VARCHAR},
+            </if>
+            <if test="poorHealth != null">
+                #{poorHealth,jdbcType=VARCHAR},
+            </if>
+            <if test="poorRank != null">
+                #{poorRank,jdbcType=VARCHAR},
+            </if>
+            <if test="homeConditionId != null">
+                #{homeConditionId,jdbcType=INTEGER},
+            </if>
+            <if test="operateName != null">
+                #{operateName,jdbcType=VARCHAR},
+            </if>
+            <if test="insertUserId != null">
+                #{insertUserId,jdbcType=INTEGER},
+            </if>
+            <if test="created != null">
+                #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modified != null">
+                #{modified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enable != null">
+                #{enable,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.manager.model.HomeCondition">
+        update people_condition
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="idcard != null">
+                idcard = #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="relation != null">
+                relation = #{relation,jdbcType=VARCHAR},
+            </if>
+            <if test="registryQuality != null">
+                registry_quality = #{registryQuality,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="leave != null">
+                leave = #{leave,jdbcType=VARCHAR},
+            </if>
+            <if test="education != null">
+                education = #{education,jdbcType=VARCHAR},
+            </if>
+            <if test="nation != null">
+                nation = #{nation,jdbcType=VARCHAR},
+            </if>
+            <if test="registryAddress != null">
+                registry_address = #{registryAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="liveAddress != null">
+                live_address = #{liveAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="marriage != null">
+                marriage = #{marriage,jdbcType=VARCHAR},
+            </if>
+            <if test="job != null">
+                job = #{job,jdbcType=VARCHAR},
+            </if>
+            <if test="jobAddress != null">
+                job_address = #{jobAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="student != null">
+                student = #{student,jdbcType=VARCHAR},
+            </if>
+            <if test="schoolAddress != null">
+                school_address = #{schoolAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="assistanceCouple != null">
+                assistance_couple = #{assistanceCouple,jdbcType=VARCHAR},
+            </if>
+            <if test="coupleName != null">
+                couple_name = #{coupleName,jdbcType=VARCHAR},
+            </if>
+            <if test="coupleMoney != null">
+                couple_money = #{coupleMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="peopleType != null">
+                people_type = #{peopleType,jdbcType=VARCHAR},
+            </if>
+            <if test="homeName != null">
+                home_name = #{homeName,jdbcType=VARCHAR},
+            </if>
+            <if test="homeMan != null">
+                home_man = #{homeMan,jdbcType=VARCHAR},
+            </if>
+            <if test="inMoney != null">
+                in_money = #{inMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="workMoney != null">
+                work_money = #{workMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="oldMoney != null">
+                old_money = #{oldMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="enjoy != null">
+                enjoy = #{enjoy,jdbcType=VARCHAR},
+            </if>
+            <if test="healthInsurance != null">
+                health_insurance = #{healthInsurance,jdbcType=VARCHAR},
+            </if>
+            <if test="homeInsurance != null">
+                home_insurance = #{homeInsurance,jdbcType=VARCHAR},
+            </if>
+            <if test="helpInsurance != null">
+                help_insurance = #{helpInsurance,jdbcType=VARCHAR},
+            </if>
+            <if test="workOldInsurance != null">
+                work_old_insurance = #{workOldInsurance,jdbcType=VARCHAR},
+            </if>
+            <if test="health != null">
+                health = #{health,jdbcType=VARCHAR},
+            </if>
+            <if test="bigSickness != null">
+                "big_ sickness" = #{bigSickness,jdbcType=VARCHAR},
+            </if>
+            <if test="poorHealth != null">
+                poor_health = #{poorHealth,jdbcType=VARCHAR},
+            </if>
+            <if test="poorRank != null">
+                poor_rank = #{poorRank,jdbcType=VARCHAR},
+            </if>
+            <if test="homeConditionId != null">
+                home_condition_id = #{homeConditionId,jdbcType=INTEGER},
+            </if>
+            <if test="operateName != null">
+                operate_name = #{operateName,jdbcType=VARCHAR},
+            </if>
+            <if test="insertUserId != null">
+                insert_user_id = #{insertUserId,jdbcType=INTEGER},
+            </if>
+            <if test="created != null">
+                created = #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modified != null">
+                modified = #{modified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enable != null">
+                enable = #{enable,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.manager.model.HomeCondition">
+    update people_condition
+    set name = #{name,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      relation = #{relation,jdbcType=VARCHAR},
+      registry_quality = #{registryQuality,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      leave = #{leave,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      registry_address = #{registryAddress,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      live_address = #{liveAddress,jdbcType=VARCHAR},
+      marriage = #{marriage,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      job_address = #{jobAddress,jdbcType=VARCHAR},
+      student = #{student,jdbcType=VARCHAR},
+      school_address = #{schoolAddress,jdbcType=VARCHAR},
+      assistance_couple = #{assistanceCouple,jdbcType=VARCHAR},
+      couple_name = #{coupleName,jdbcType=VARCHAR},
+      couple_money = #{coupleMoney,jdbcType=VARCHAR},
+      people_type = #{peopleType,jdbcType=VARCHAR},
+      home_name = #{homeName,jdbcType=VARCHAR},
+      home_man = #{homeMan,jdbcType=VARCHAR},
+      in_money = #{inMoney,jdbcType=VARCHAR},
+      work_money = #{workMoney,jdbcType=VARCHAR},
+      old_money = #{oldMoney,jdbcType=VARCHAR},
+      enjoy = #{enjoy,jdbcType=VARCHAR},
+      health_insurance = #{healthInsurance,jdbcType=VARCHAR},
+      home_insurance = #{homeInsurance,jdbcType=VARCHAR},
+      help_insurance = #{helpInsurance,jdbcType=VARCHAR},
+      work_old_insurance = #{workOldInsurance,jdbcType=VARCHAR},
+      health = #{health,jdbcType=VARCHAR},
+      "big_ sickness" = #{bigSickness,jdbcType=VARCHAR},
+      poor_health = #{poorHealth,jdbcType=VARCHAR},
+      poor_rank = #{poorRank,jdbcType=VARCHAR},
+      home_condition_id = #{homeConditionId,jdbcType=INTEGER},
+      operate_name = #{operateName,jdbcType=VARCHAR},
+      insert_user_id = #{insertUserId,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      modified = #{modified,jdbcType=TIMESTAMP},
+      enable = #{enable,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <resultMap id="BaseResultMap" type="com.manager.model.HomeCondition">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="neighborhood" jdbcType="VARCHAR" property="neighborhood"/>
+        <result column="num" jdbcType="INTEGER" property="num"/>
+        <result column="registry_address" jdbcType="VARCHAR" property="registryAddress"/>
+        <result column="registry_condition" jdbcType="VARCHAR" property="registryCondition"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="live_address" jdbcType="VARCHAR" property="liveAddress"/>
+        <result column="difficut" jdbcType="VARCHAR" property="difficut"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="low" jdbcType="VARCHAR" property="low"/>
+        <result column="low_money" jdbcType="VARCHAR" property="lowMoney"/>
+        <result column="low_in" jdbcType="VARCHAR" property="lowIn"/>
+        <result column="spec_ poor" jdbcType="VARCHAR" property="specPoor"/>
+        <result column="spec_poor_money" jdbcType="VARCHAR" property="specPoorMoney"/>
+        <result column="spec_poor_out" jdbcType="VARCHAR" property="specPoorOut"/>
+        <result column="poor_child" jdbcType="VARCHAR" property="poorChild"/>
+        <result column="poor_child_money" jdbcType="VARCHAR" property="poorChildMoney"/>
+        <result column="disabled_man" jdbcType="VARCHAR" property="disabledMan"/>
+        <result column="disabled_man_money" jdbcType="VARCHAR" property="disabledManMoney"/>
+        <result column="low_rent" jdbcType="VARCHAR" property="lowRent"/>
+        <result column="low_rent_money" jdbcType="VARCHAR" property="lowRentMoney"/>
+        <result column="own_house" jdbcType="VARCHAR" property="ownHouse"/>
+        <result column="own_out_house" jdbcType="VARCHAR" property="ownOutHouse"/>
+        <result column="own_car" jdbcType="VARCHAR" property="ownCar"/>
+        <result column="inquire_goal" jdbcType="VARCHAR" property="inquireGoal"/>
+        <result column="inquire_condition" jdbcType="VARCHAR" property="inquireCondition"/>
+        <result column="operate_name" jdbcType="VARCHAR" property="operateName"/>
+        <result column="insert_user_id" jdbcType="INTEGER" property="insertUserId"/>
+        <result column="created" jdbcType="TIMESTAMP" property="created"/>
+        <result column="modified" jdbcType="TIMESTAMP" property="modified"/>
+        <result column="enbale" jdbcType="INTEGER" property="enbale"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, neighborhood, num, registry_address, registry_condition, phone, live_address, 
+    difficut, type, low, low_money, low_in, "spec_ poor", spec_poor_money, spec_poor_out, 
+    poor_child, poor_child_money, disabled_man, disabled_man_money, low_rent, low_rent_money, 
+    own_house, own_out_house, own_car, inquire_goal, inquire_condition, operate_name, 
+    insert_user_id, created, modified, enbale
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from home_condition
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from home_condition
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.manager.model.HomeCondition">
+    insert into home_condition (id, neighborhood, num, 
+      registry_address, registry_condition, phone, 
+      live_address, difficut, type, 
+      low, low_money, low_in, 
+      "spec_ poor", spec_poor_money, spec_poor_out, 
+      poor_child, poor_child_money, disabled_man, 
+      disabled_man_money, low_rent, low_rent_money, 
+      own_house, own_out_house, own_car, 
+      inquire_goal, inquire_condition, operate_name, 
+      insert_user_id, created, modified, 
+      enbale)
+    values (#{id,jdbcType=INTEGER}, #{neighborhood,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, 
+      #{registryAddress,jdbcType=VARCHAR}, #{registryCondition,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{liveAddress,jdbcType=VARCHAR}, #{difficut,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{low,jdbcType=VARCHAR}, #{lowMoney,jdbcType=VARCHAR}, #{lowIn,jdbcType=VARCHAR}, 
+      #{specPoor,jdbcType=VARCHAR}, #{specPoorMoney,jdbcType=VARCHAR}, #{specPoorOut,jdbcType=VARCHAR}, 
+      #{poorChild,jdbcType=VARCHAR}, #{poorChildMoney,jdbcType=VARCHAR}, #{disabledMan,jdbcType=VARCHAR}, 
+      #{disabledManMoney,jdbcType=VARCHAR}, #{lowRent,jdbcType=VARCHAR}, #{lowRentMoney,jdbcType=VARCHAR}, 
+      #{ownHouse,jdbcType=VARCHAR}, #{ownOutHouse,jdbcType=VARCHAR}, #{ownCar,jdbcType=VARCHAR}, 
+      #{inquireGoal,jdbcType=VARCHAR}, #{inquireCondition,jdbcType=VARCHAR}, #{operateName,jdbcType=VARCHAR}, 
+      #{insertUserId,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{modified,jdbcType=TIMESTAMP}, 
+      #{enbale,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.manager.model.HomeCondition">
+        insert into home_condition
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="neighborhood != null">
+                neighborhood,
+            </if>
+            <if test="num != null">
+                num,
+            </if>
+            <if test="registryAddress != null">
+                registry_address,
+            </if>
+            <if test="registryCondition != null">
+                registry_condition,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="liveAddress != null">
+                live_address,
+            </if>
+            <if test="difficut != null">
+                difficut,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="low != null">
+                low,
+            </if>
+            <if test="lowMoney != null">
+                low_money,
+            </if>
+            <if test="lowIn != null">
+                low_in,
+            </if>
+            <if test="specPoor != null">
+                "spec_ poor",
+            </if>
+            <if test="specPoorMoney != null">
+                spec_poor_money,
+            </if>
+            <if test="specPoorOut != null">
+                spec_poor_out,
+            </if>
+            <if test="poorChild != null">
+                poor_child,
+            </if>
+            <if test="poorChildMoney != null">
+                poor_child_money,
+            </if>
+            <if test="disabledMan != null">
+                disabled_man,
+            </if>
+            <if test="disabledManMoney != null">
+                disabled_man_money,
+            </if>
+            <if test="lowRent != null">
+                low_rent,
+            </if>
+            <if test="lowRentMoney != null">
+                low_rent_money,
+            </if>
+            <if test="ownHouse != null">
+                own_house,
+            </if>
+            <if test="ownOutHouse != null">
+                own_out_house,
+            </if>
+            <if test="ownCar != null">
+                own_car,
+            </if>
+            <if test="inquireGoal != null">
+                inquire_goal,
+            </if>
+            <if test="inquireCondition != null">
+                inquire_condition,
+            </if>
+            <if test="operateName != null">
+                operate_name,
+            </if>
+            <if test="insertUserId != null">
+                insert_user_id,
+            </if>
+            <if test="created != null">
+                created,
+            </if>
+            <if test="modified != null">
+                modified,
+            </if>
+            <if test="enbale != null">
+                enbale,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="neighborhood != null">
+                #{neighborhood,jdbcType=VARCHAR},
+            </if>
+            <if test="num != null">
+                #{num,jdbcType=INTEGER},
+            </if>
+            <if test="registryAddress != null">
+                #{registryAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="registryCondition != null">
+                #{registryCondition,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="liveAddress != null">
+                #{liveAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="difficut != null">
+                #{difficut,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="low != null">
+                #{low,jdbcType=VARCHAR},
+            </if>
+            <if test="lowMoney != null">
+                #{lowMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="lowIn != null">
+                #{lowIn,jdbcType=VARCHAR},
+            </if>
+            <if test="specPoor != null">
+                #{specPoor,jdbcType=VARCHAR},
+            </if>
+            <if test="specPoorMoney != null">
+                #{specPoorMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="specPoorOut != null">
+                #{specPoorOut,jdbcType=VARCHAR},
+            </if>
+            <if test="poorChild != null">
+                #{poorChild,jdbcType=VARCHAR},
+            </if>
+            <if test="poorChildMoney != null">
+                #{poorChildMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="disabledMan != null">
+                #{disabledMan,jdbcType=VARCHAR},
+            </if>
+            <if test="disabledManMoney != null">
+                #{disabledManMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="lowRent != null">
+                #{lowRent,jdbcType=VARCHAR},
+            </if>
+            <if test="lowRentMoney != null">
+                #{lowRentMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="ownHouse != null">
+                #{ownHouse,jdbcType=VARCHAR},
+            </if>
+            <if test="ownOutHouse != null">
+                #{ownOutHouse,jdbcType=VARCHAR},
+            </if>
+            <if test="ownCar != null">
+                #{ownCar,jdbcType=VARCHAR},
+            </if>
+            <if test="inquireGoal != null">
+                #{inquireGoal,jdbcType=VARCHAR},
+            </if>
+            <if test="inquireCondition != null">
+                #{inquireCondition,jdbcType=VARCHAR},
+            </if>
+            <if test="operateName != null">
+                #{operateName,jdbcType=VARCHAR},
+            </if>
+            <if test="insertUserId != null">
+                #{insertUserId,jdbcType=INTEGER},
+            </if>
+            <if test="created != null">
+                #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modified != null">
+                #{modified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enbale != null">
+                #{enbale,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.manager.model.HomeCondition">
+        update home_condition
+        <set>
+            <if test="neighborhood != null">
+                neighborhood = #{neighborhood,jdbcType=VARCHAR},
+            </if>
+            <if test="num != null">
+                num = #{num,jdbcType=INTEGER},
+            </if>
+            <if test="registryAddress != null">
+                registry_address = #{registryAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="registryCondition != null">
+                registry_condition = #{registryCondition,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="liveAddress != null">
+                live_address = #{liveAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="difficut != null">
+                difficut = #{difficut,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="low != null">
+                low = #{low,jdbcType=VARCHAR},
+            </if>
+            <if test="lowMoney != null">
+                low_money = #{lowMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="lowIn != null">
+                low_in = #{lowIn,jdbcType=VARCHAR},
+            </if>
+            <if test="specPoor != null">
+                "spec_ poor" = #{specPoor,jdbcType=VARCHAR},
+            </if>
+            <if test="specPoorMoney != null">
+                spec_poor_money = #{specPoorMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="specPoorOut != null">
+                spec_poor_out = #{specPoorOut,jdbcType=VARCHAR},
+            </if>
+            <if test="poorChild != null">
+                poor_child = #{poorChild,jdbcType=VARCHAR},
+            </if>
+            <if test="poorChildMoney != null">
+                poor_child_money = #{poorChildMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="disabledMan != null">
+                disabled_man = #{disabledMan,jdbcType=VARCHAR},
+            </if>
+            <if test="disabledManMoney != null">
+                disabled_man_money = #{disabledManMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="lowRent != null">
+                low_rent = #{lowRent,jdbcType=VARCHAR},
+            </if>
+            <if test="lowRentMoney != null">
+                low_rent_money = #{lowRentMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="ownHouse != null">
+                own_house = #{ownHouse,jdbcType=VARCHAR},
+            </if>
+            <if test="ownOutHouse != null">
+                own_out_house = #{ownOutHouse,jdbcType=VARCHAR},
+            </if>
+            <if test="ownCar != null">
+                own_car = #{ownCar,jdbcType=VARCHAR},
+            </if>
+            <if test="inquireGoal != null">
+                inquire_goal = #{inquireGoal,jdbcType=VARCHAR},
+            </if>
+            <if test="inquireCondition != null">
+                inquire_condition = #{inquireCondition,jdbcType=VARCHAR},
+            </if>
+            <if test="operateName != null">
+                operate_name = #{operateName,jdbcType=VARCHAR},
+            </if>
+            <if test="insertUserId != null">
+                insert_user_id = #{insertUserId,jdbcType=INTEGER},
+            </if>
+            <if test="created != null">
+                created = #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modified != null">
+                modified = #{modified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enbale != null">
+                enbale = #{enbale,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.manager.model.HomeCondition">
+    update home_condition
+    set neighborhood = #{neighborhood,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      registry_address = #{registryAddress,jdbcType=VARCHAR},
+      registry_condition = #{registryCondition,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      live_address = #{liveAddress,jdbcType=VARCHAR},
+      difficut = #{difficut,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      low = #{low,jdbcType=VARCHAR},
+      low_money = #{lowMoney,jdbcType=VARCHAR},
+      low_in = #{lowIn,jdbcType=VARCHAR},
+      "spec_ poor" = #{specPoor,jdbcType=VARCHAR},
+      spec_poor_money = #{specPoorMoney,jdbcType=VARCHAR},
+      spec_poor_out = #{specPoorOut,jdbcType=VARCHAR},
+      poor_child = #{poorChild,jdbcType=VARCHAR},
+      poor_child_money = #{poorChildMoney,jdbcType=VARCHAR},
+      disabled_man = #{disabledMan,jdbcType=VARCHAR},
+      disabled_man_money = #{disabledManMoney,jdbcType=VARCHAR},
+      low_rent = #{lowRent,jdbcType=VARCHAR},
+      low_rent_money = #{lowRentMoney,jdbcType=VARCHAR},
+      own_house = #{ownHouse,jdbcType=VARCHAR},
+      own_out_house = #{ownOutHouse,jdbcType=VARCHAR},
+      own_car = #{ownCar,jdbcType=VARCHAR},
+      inquire_goal = #{inquireGoal,jdbcType=VARCHAR},
+      inquire_condition = #{inquireCondition,jdbcType=VARCHAR},
+      operate_name = #{operateName,jdbcType=VARCHAR},
+      insert_user_id = #{insertUserId,jdbcType=INTEGER},
+      created = #{created,jdbcType=TIMESTAMP},
+      modified = #{modified,jdbcType=TIMESTAMP},
+      enbale = #{enbale,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
