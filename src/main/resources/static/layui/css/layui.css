@@ -208,6 +208,13 @@ a cite {
     height: 60px
 }
 
+.head-bar {
+    z-index: 1000;
+    height: 30px;
+    background: url(head_bar.png) no-repeat;
+}
+
+
 .layui-header a:hover {
     transition: all .5s;
     -webkit-transition: all .5s
@@ -215,7 +222,7 @@ a cite {
 
 .layui-side {
     position: fixed;
-    top: 0;
+    top: 30px;
     bottom: 0;
     z-index: 999;
     width: 200px;
@@ -225,14 +232,15 @@ a cite {
 .layui-side-scroll {
     width: 220px;
     height: 100%;
-    overflow-x: hidden
+    overflow-x: hidden;
+    border: thin solid black;
 }
 
 .layui-body {
     position: absolute;
     left: 200px;
     right: 0;
-    top: 0;
+    top: 30px;
     bottom: 0;
     z-index: 998;
     width: auto;
@@ -246,17 +254,17 @@ a cite {
 }
 
 .layui-layout-admin .layui-header {
-    background-color: #23262E
+    background-color: #1176AF
 }
 
 .layui-layout-admin .layui-side {
-    top: 60px;
+    top: 90px;
     width: 200px;
     overflow-x: hidden
 }
 
 .layui-layout-admin .layui-body {
-    top: 60px;
+    top: 90px;
     bottom: 44px
 }
 
@@ -278,13 +286,13 @@ a cite {
 
 .layui-layout-admin .layui-logo {
     position: absolute;
-    left: 0;
+    left: 15px;
     top: 0;
-    width: 200px;
+    width: 400px;
     height: 100%;
     line-height: 60px;
-    text-align: center;
-    color: #009688;
+    text-align: left;
+    color: #FFFFFF;
     font-size: 16px
 }
 
@@ -1068,6 +1076,10 @@ a cite {
 }
 
 .layui-bg-black, .layui-bg-blue, .layui-bg-cyan, .layui-bg-green, .layui-bg-orange, .layui-bg-red {
+    color: #fff !important
+}
+
+.layui-bg-wight {
     color: #fff !important
 }
 
@@ -2678,7 +2690,7 @@ body .layui-table-tips .layui-layer-content {
 .layui-nav {
     position: relative;
     padding: 0 20px;
-    background-color: #393D49;
+    background-color: #1B77AD;
     color: #fff;
     border-radius: 2px;
     font-size: 0;
@@ -2713,7 +2725,8 @@ body .layui-table-tips .layui-layer-content {
     top: 0;
     width: 0;
     height: 5px;
-    background-color: #5FB878;
+    background-color: #1B77AD;
+    color: #FFFFFF;
     transition: all .2s;
     -webkit-transition: all .2s
 }
@@ -2723,7 +2736,7 @@ body .layui-table-tips .layui-layer-content {
 }
 
 .layui-nav .layui-nav-item a:hover, .layui-nav .layui-this a {
-    color: #fff
+    color: #FFFFFF
 }
 
 .layui-nav .layui-this:after {
@@ -2745,7 +2758,7 @@ body .layui-table-tips .layui-layer-content {
     width: 0;
     height: 0;
     border-style: solid dashed dashed;
-    border-color: #fff transparent transparent;
+    border-color: #1b77ad transparent transparent;
     overflow: hidden;
     cursor: pointer;
     transition: all .2s;
@@ -2794,7 +2807,7 @@ body .layui-table-tips .layui-layer-content {
 }
 
 .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this {
-    background-color: #5FB878;
+    background-color: #1B77AD;
     color: #fff
 }
 
@@ -2822,17 +2835,17 @@ body .layui-table-tips .layui-layer-content {
 }
 
 .layui-nav-tree .layui-nav-item a:hover {
-    background-color: #4E5465
+    background-color: #1B77AD
 }
 
 .layui-nav-tree .layui-nav-bar {
     width: 5px;
     height: 0;
-    background-color: #009688
+    background-color: #1B77AD
 }
 
 .layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover {
-    background-color: #009688;
+    background-color: #1B77AD;
     color: #fff
 }
 
@@ -2861,7 +2874,7 @@ body .layui-table-tips .layui-layer-content {
 
 .layui-nav-tree .layui-nav-child, .layui-nav-tree .layui-nav-child a:hover {
     background: 0 0;
-    color: #fff
+    color: #FFFFFF
 }
 
 .layui-nav-tree .layui-nav-more {

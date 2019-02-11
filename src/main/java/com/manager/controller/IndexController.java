@@ -44,4 +44,10 @@ public class IndexController {
         logger.debug("-------------toindex------------" + page);
         return page;
     }
+
+    @RequestMapping("/people")
+    public String toPage() {
+        logger.debug("-------------people------------");
+        return "people/people.html";
+    }
 }

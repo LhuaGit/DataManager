@@ -1,6 +1,7 @@
 package com.manager.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class HomeCondition {
     private Integer id;
@@ -19,7 +20,7 @@ public class HomeCondition {
 
     private String difficut;
 
-    private String type;
+    private String homeType;
 
     private String low;
 
@@ -64,6 +65,8 @@ public class HomeCondition {
     private Date modified;
 
     private Integer enbale;
+
+    private List<PeopleCondition> peopleConditionList;
 
     public Integer getId() {
         return id;
@@ -129,12 +132,12 @@ public class HomeCondition {
         this.difficut = difficut == null ? null : difficut.trim();
     }
 
-    public String getType() {
-        return type;
+    public String getHomeType() {
+        return homeType;
     }
 
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+    public void setHomeType(String homeType) {
+        this.homeType = homeType;
     }
 
     public String getLow() {
@@ -311,5 +314,13 @@ public class HomeCondition {
 
     public void setEnbale(Integer enbale) {
         this.enbale = enbale;
+    }
+
+    public List<PeopleCondition> getPeopleConditionList() {
+        return peopleConditionList;
+    }
+
+    public void setPeopleConditionList(List<PeopleCondition> peopleConditionList) {
+        this.peopleConditionList = peopleConditionList;
     }
 }

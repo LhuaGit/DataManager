@@ -35,43 +35,25 @@
         <!--#1176AF-->
         <div class="layui-header ">
             <a href="javascript:;" class="layui-hide-xs"><a href="/home" style="font-weight: bold;">
-                <div class="layui-logo">后台管理系统</div>
+                <div class="layui-logo">
+                    <img src="/images/head_logo.png" height="35"></img>
+                    江浦路街道困难家庭个案管理系统 v2.0
+                </div>
             </a>
             </a>
             <a href="javascript:;" class="layui-hide-xs">
                 <div class="switchMenu" style="display: none;"><i class="fa fa-indent"></i></div>
             </a>
-            <!-- 头部区域（可配合layui已有的水平导航） -->
-            <!--<ul class="layui-nav layui-layout-left">
-                <li class="layui-nav-item"><a href="">控制台</a></li>
-                <li class="layui-nav-item"><a href="">商品管理</a></li>
-                <li class="layui-nav-item"><a href="">用户</a></li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">其它系统</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="">邮件管理</a></dd>
-                        <dd><a href="">消息管理</a></dd>
-                        <dd><a href="">授权管理</a></dd>
-                    </dl>
-                </li>
-            </ul>-->
-            <ul class="layui-nav layui-layout-right">
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <img src="/images/logo.png" class="layui-nav-img"></img>
-                        <shiro:principal property="username"></shiro:principal>
-                    </a>
-                    <dl class="layui-nav-child">
-                        <!--<dd><a href="">基本资料</a></dd>-->
-                        <dd id="updUsePwdDd" class="layui-this"><a href="javascript:;"
-                                                                   onclick="updateUsePwd();">修改密码</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="/logout">退了</a></li>
-            </ul>
+        </div>
+        <div class="head-bar ">
+            <a href="javascript:;" class="layui-hide-xs">
+                <div class="background:url(/images/head_bar.png)" height="20px" width="auto">
+                </div>
+            </a>
         </div>
 
-        <div class="layui-side layui-bg-black">
+
+        <div class="layui-side layui-bg-wight">
             <div class="layui-side-scroll">
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <!--<ul class="layui-nav layui-nav-tree"  lay-filter="test">
