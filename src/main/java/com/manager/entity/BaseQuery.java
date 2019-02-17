@@ -18,16 +18,20 @@ public class BaseQuery implements Serializable {
         return pageNo;
     }
 
-    public void setPageNo(int pageNo) {
-        this.pageNo = pageNo;
+    public void setPageNo(Integer pageNo) {
+        if (pageNo != null) {
+            this.pageNo = pageNo;
+        }
     }
 
     public int getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
+    public void setPageSize(Integer pageSize) {
+        if (pageSize != null) {
+            this.pageSize = pageSize;
+        }
     }
 
 

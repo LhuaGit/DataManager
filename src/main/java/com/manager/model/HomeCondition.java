@@ -1,71 +1,76 @@
 package com.manager.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 import java.util.List;
 
+@ApiModel(value = "homeCondition", description = "包含成员家庭信息")
 public class HomeCondition {
+    @ApiModelProperty(value = "用户id")
     private Integer id;
-
+    @ApiModelProperty(value = "所属居委")
     private String neighborhood;
-
+    @ApiModelProperty(value = "户籍人数")
     private Integer num;
-
+    @ApiModelProperty(value = "户籍地址")
     private String registryAddress;
-
+    @ApiModelProperty(value = "户籍情况")
     private String registryCondition;
-
+    @ApiModelProperty(value = "联系电话")
     private String phone;
-
+    @ApiModelProperty(value = "居住地址")
     private String liveAddress;
-
+    @ApiModelProperty(value = "困难程度")
     private String difficut;
-
+    @ApiModelProperty(value = "家庭类别")
     private String homeType;
-
+    @ApiModelProperty(value = "是否低保，1：是，0：不是")
     private String low;
-
+    @ApiModelProperty(value = "低保金额")
     private String lowMoney;
-
+    @ApiModelProperty(value = "低收入，1：是，0:不是")
     private String lowIn;
-
+    @ApiModelProperty(value = "是否特困，1：是")
     private String specPoor;
-
+    @ApiModelProperty(value = "特困金额")
     private String specPoorMoney;
-
+    @ApiModelProperty(value = "支出型特困，1：是")
     private String specPoorOut;
-
+    @ApiModelProperty(value = "是否有特困儿童，1：是")
     private String poorChild;
-
+    @ApiModelProperty(value = "困境儿童金额")
     private String poorChildMoney;
-
+    @ApiModelProperty(value = "是否是残疾人，1：是")
     private String disabledMan;
-
+    @ApiModelProperty(value = "残疾补贴金额")
     private String disabledManMoney;
-
+    @ApiModelProperty(value = "是否是廉租房")
     private String lowRent;
-
+    @ApiModelProperty(value = "廉租房金额")
     private String lowRentMoney;
-
+    @ApiModelProperty(value = "是否是自有住房，1：是")
     private String ownHouse;
-
+    @ApiModelProperty(value = "是否自有非居住类房，1：是")
     private String ownOutHouse;
-
+    @ApiModelProperty(value = "是否自有机动车，1：是")
     private String ownCar;
-
+    @ApiModelProperty(value = "调查目的")
     private String inquireGoal;
-
+    @ApiModelProperty(value = "调查情况")
     private String inquireCondition;
-
+    @ApiModelProperty(value = "操作人=录入人")
     private String operateName;
-
+    @ApiModelProperty(value = "插入记录人")
     private Integer insertUserId;
-
+    @ApiModelProperty(value = "创建时间，无需传递")
     private Date created;
-
+    @ApiModelProperty(value = "修改时间，无需传递")
     private Date modified;
-
-    private Integer enbale;
-
+    @ApiModelProperty(value = "是有有效，1：有效")
+    private Integer enable;
+    @ApiModelProperty(value = "多个成员")
     private List<PeopleCondition> peopleConditionList;
 
     public Integer getId() {
@@ -308,12 +313,12 @@ public class HomeCondition {
         this.modified = modified;
     }
 
-    public Integer getEnbale() {
-        return enbale;
+    public Integer getEnable() {
+        return enable;
     }
 
-    public void setEnbale(Integer enbale) {
-        this.enbale = enbale;
+    public void setEnable(Integer enable) {
+        this.enable = enable;
     }
 
     public List<PeopleCondition> getPeopleConditionList() {

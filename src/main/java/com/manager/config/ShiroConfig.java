@@ -102,6 +102,10 @@ public class ShiroConfig {
 //        filterChainDefinitionMap.put("/*/*", "authc");
 //        filterChainDefinitionMap.put("/*/*/*", "authc");
 //        filterChainDefinitionMap.put("/*/*/*/**", "authc");
+        filterChainDefinitionMap.put("/**", "anon");
+        filterChainDefinitionMap.put("/*/*", "anon");
+        filterChainDefinitionMap.put("/*/*/*", "anon");
+        filterChainDefinitionMap.put("/*/*/*/**", "anon");
 
         shiroFilterFactoryBean
                 .setFilterChainDefinitionMap(filterChainDefinitionMap);

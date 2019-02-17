@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.manager.dao.NoticeMapper">
+    <resultMap id="BaseResultMap" type="com.manager.model.Notice">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="num_id" property="numId" jdbcType="VARCHAR"/>
+        <result column="send_dept" property="sendDept" jdbcType="VARCHAR"/>
+        <result column="deal_dept" property="dealDept" jdbcType="VARCHAR"/>
+        <result column="adjust_desc" property="adjustDesc" jdbcType="VARCHAR"/>
+        <result column="neighborhood" property="neighborhood" jdbcType="VARCHAR"/>
+        <result column="money" property="money" jdbcType="VARCHAR"/>
+        <result column="file_url" property="fileUrl" jdbcType="VARCHAR"/>
+        <result column="created" property="created" jdbcType="TIMESTAMP"/>
+        <result column="modified" property="modified" jdbcType="TIMESTAMP"/>
+        <result column="enable" property="enable" jdbcType="VARCHAR"/>
+        <result column="insert_user_id" property="insertUserId" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.manager.model.Notice" extends="BaseResultMap">
+        <result column="content" property="content" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, name, num_id, send_dept, deal_dept, adjust_desc, neighborhood, money, file_url, 
+    created, modified, enable, insert_user_id, status
+  </sql>
+    <sql id="Blob_Column_List">
+    content
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from notice
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from notice
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.manager.model.Notice">
+    insert into notice (id, name, num_id, 
+      send_dept, deal_dept, adjust_desc, 
+      neighborhood, money, file_url, 
+      created, modified, enable, 
+      insert_user_id, status, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{numId,jdbcType=VARCHAR}, 
+      #{sendDept,jdbcType=VARCHAR}, #{dealDept,jdbcType=VARCHAR}, #{adjustDesc,jdbcType=VARCHAR}, 
+      #{neighborhood,jdbcType=VARCHAR}, #{money,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR}, 
+      #{created,jdbcType=TIMESTAMP}, #{modified,jdbcType=TIMESTAMP}, #{enable,jdbcType=VARCHAR}, 
+      #{insertUserId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.manager.model.Notice">
+        insert into notice
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="numId != null">
+                num_id,
+            </if>
+            <if test="sendDept != null">
+                send_dept,
+            </if>
+            <if test="dealDept != null">
+                deal_dept,
+            </if>
+            <if test="adjustDesc != null">
+                adjust_desc,
+            </if>
+            <if test="neighborhood != null">
+                neighborhood,
+            </if>
+            <if test="money != null">
+                money,
+            </if>
+            <if test="fileUrl != null">
+                file_url,
+            </if>
+            <if test="created != null">
+                created,
+            </if>
+            <if test="modified != null">
+                modified,
+            </if>
+            <if test="enable != null">
+                enable,
+            </if>
+            <if test="insertUserId != null">
+                insert_user_id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="numId != null">
+                #{numId,jdbcType=VARCHAR},
+            </if>
+            <if test="sendDept != null">
+                #{sendDept,jdbcType=VARCHAR},
+            </if>
+            <if test="dealDept != null">
+                #{dealDept,jdbcType=VARCHAR},
+            </if>
+            <if test="adjustDesc != null">
+                #{adjustDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="neighborhood != null">
+                #{neighborhood,jdbcType=VARCHAR},
+            </if>
+            <if test="money != null">
+                #{money,jdbcType=VARCHAR},
+            </if>
+            <if test="fileUrl != null">
+                #{fileUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="created != null">
+                #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modified != null">
+                #{modified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enable != null">
+                #{enable,jdbcType=VARCHAR},
+            </if>
+            <if test="insertUserId != null">
+                #{insertUserId,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.manager.model.Notice">
+        update notice
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="numId != null">
+                num_id = #{numId,jdbcType=VARCHAR},
+            </if>
+            <if test="sendDept != null">
+                send_dept = #{sendDept,jdbcType=VARCHAR},
+            </if>
+            <if test="dealDept != null">
+                deal_dept = #{dealDept,jdbcType=VARCHAR},
+            </if>
+            <if test="adjustDesc != null">
+                adjust_desc = #{adjustDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="neighborhood != null">
+                neighborhood = #{neighborhood,jdbcType=VARCHAR},
+            </if>
+            <if test="money != null">
+                money = #{money,jdbcType=VARCHAR},
+            </if>
+            <if test="fileUrl != null">
+                file_url = #{fileUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="created != null">
+                created = #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modified != null">
+                modified = #{modified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enable != null">
+                enable = #{enable,jdbcType=VARCHAR},
+            </if>
+            <if test="insertUserId != null">
+                insert_user_id = #{insertUserId,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.manager.model.Notice">
+    update notice
+    set name = #{name,jdbcType=VARCHAR},
+      num_id = #{numId,jdbcType=VARCHAR},
+      send_dept = #{sendDept,jdbcType=VARCHAR},
+      deal_dept = #{dealDept,jdbcType=VARCHAR},
+      adjust_desc = #{adjustDesc,jdbcType=VARCHAR},
+      neighborhood = #{neighborhood,jdbcType=VARCHAR},
+      money = #{money,jdbcType=VARCHAR},
+      file_url = #{fileUrl,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      modified = #{modified,jdbcType=TIMESTAMP},
+      enable = #{enable,jdbcType=VARCHAR},
+      insert_user_id = #{insertUserId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.manager.model.Notice">
+    update notice
+    set name = #{name,jdbcType=VARCHAR},
+      num_id = #{numId,jdbcType=VARCHAR},
+      send_dept = #{sendDept,jdbcType=VARCHAR},
+      deal_dept = #{dealDept,jdbcType=VARCHAR},
+      adjust_desc = #{adjustDesc,jdbcType=VARCHAR},
+      neighborhood = #{neighborhood,jdbcType=VARCHAR},
+      money = #{money,jdbcType=VARCHAR},
+      file_url = #{fileUrl,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      modified = #{modified,jdbcType=TIMESTAMP},
+      enable = #{enable,jdbcType=VARCHAR},
+      insert_user_id = #{insertUserId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

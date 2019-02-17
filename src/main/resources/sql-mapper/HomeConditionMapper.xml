@@ -14,7 +14,7 @@
         <result column="low" jdbcType="VARCHAR" property="low"/>
         <result column="low_money" jdbcType="VARCHAR" property="lowMoney"/>
         <result column="low_in" jdbcType="VARCHAR" property="lowIn"/>
-        <result column="spec_ poor" jdbcType="VARCHAR" property="specPoor"/>
+        <result column="spec_poor" jdbcType="VARCHAR" property="specPoor"/>
         <result column="spec_poor_money" jdbcType="VARCHAR" property="specPoorMoney"/>
         <result column="spec_poor_out" jdbcType="VARCHAR" property="specPoorOut"/>
         <result column="poor_child" jdbcType="VARCHAR" property="poorChild"/>
@@ -36,7 +36,7 @@
     </resultMap>
     <sql id="Base_Column_List">
     id, neighborhood, num, registry_address, registry_condition, phone, live_address,
-        difficut, home_type, low, low_money, low_in, "spec_ poor", spec_poor_money, spec_poor_out,
+        difficut, home_type, low, low_money, low_in, spec_poor, spec_poor_money, spec_poor_out,
     poor_child, poor_child_money, disabled_man, disabled_man_money, low_rent, low_rent_money, 
     own_house, own_out_house, own_car, inquire_goal, inquire_condition, operate_name,
         insert_user_id, created, modified, enable
@@ -59,7 +59,7 @@
                 AND  <![CDATA[  created <= #createdEnd# ]]>
             </if>
             <if test="neighborhood != null">
-                AND neighborhood like concat('%', #{state} , '%')
+                AND neighborhood like concat('%', #{neighborhood} , '%')
             </if>
             <if test="operateName != null">
                 AND operate_name like concat('%', #{operateName}, '%')
@@ -78,8 +78,8 @@
     insert into home_condition (id, neighborhood, num, 
       registry_address, registry_condition, phone,
         live_address, difficut, home_type,
-      low, low_money, low_in, 
-      "spec_ poor", spec_poor_money, spec_poor_out, 
+      low, low_money, low_in,
+        spec_poor, spec_poor_money, spec_poor_out,
       poor_child, poor_child_money, disabled_man, 
       disabled_man_money, low_rent, low_rent_money, 
       own_house, own_out_house, own_car, 
@@ -138,7 +138,7 @@
                 low_in,
             </if>
             <if test="specPoor != null">
-                "spec_ poor",
+                spec_poor,
             </if>
             <if test="specPoorMoney != null">
                 spec_poor_money,
@@ -328,7 +328,7 @@
                 low_in = #{lowIn,jdbcType=VARCHAR},
             </if>
             <if test="specPoor != null">
-                "spec_ poor" = #{specPoor,jdbcType=VARCHAR},
+                spec_poor = #{specPoor,jdbcType=VARCHAR},
             </if>
             <if test="specPoorMoney != null">
                 spec_poor_money = #{specPoorMoney,jdbcType=VARCHAR},
@@ -400,7 +400,7 @@
       low = #{low,jdbcType=VARCHAR},
       low_money = #{lowMoney,jdbcType=VARCHAR},
       low_in = #{lowIn,jdbcType=VARCHAR},
-      "spec_ poor" = #{specPoor,jdbcType=VARCHAR},
+        spec_poor = #{specPoor,jdbcType=VARCHAR},
       spec_poor_money = #{specPoorMoney,jdbcType=VARCHAR},
       spec_poor_out = #{specPoorOut,jdbcType=VARCHAR},
       poor_child = #{poorChild,jdbcType=VARCHAR},

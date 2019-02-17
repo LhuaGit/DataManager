@@ -12,20 +12,20 @@ import java.io.Serializable;
  * @创建时间： 2018年1月4日10:57:24
  * @version:
  */
-public class ResponseResult implements Serializable {
+public class ResponseResult<T> implements Serializable {
 
     private static final long serialVersionUID = 7285065610386199394L;
 
-    private String code;
+    private String code = IStatusMessage.SystemStatus.SUCCESS.getCode();
     private String message;
-    private Object obj;
+    private T obj;
 
     public ResponseResult() {
         this.code = IStatusMessage.SystemStatus.SUCCESS.getCode();
         this.message = IStatusMessage.SystemStatus.SUCCESS.getMessage();
     }
 
-    public ResponseResult(Object obj) {
+    public ResponseResult(T obj) {
         this.code = IStatusMessage.SystemStatus.SUCCESS.getCode();
         this.message = IStatusMessage.SystemStatus.SUCCESS.getMessage();
         this.obj = obj;
@@ -53,11 +53,11 @@ public class ResponseResult implements Serializable {
         this.message = message;
     }
 
-    public Object getObj() {
+    public T getObj() {
         return obj;
     }
 
-    public void setObj(Object obj) {
+    public void setObj(T obj) {
         this.obj = obj;
     }
 

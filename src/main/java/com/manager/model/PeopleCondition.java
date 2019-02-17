@@ -1,91 +1,96 @@
 package com.manager.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
+@ApiModel(value = "成员信息", description = "成员信息")
 public class PeopleCondition {
+    @ApiModelProperty(value = "主键id")
     private Integer id;
-
+    @ApiModelProperty(value = "姓名")
     private String name;
-
+    @ApiModelProperty(value = "身份证")
     private String idcard;
-
+    @ApiModelProperty(value = "生日")
     private Date birthday;
-
+    @ApiModelProperty(value = "与申请人的关系")
     private String relation;
-
+    @ApiModelProperty(value = "户籍性质")
     private String registryQuality;
-
+    @ApiModelProperty(value = "性别")
     private String sex;
-
+    @ApiModelProperty(value = "是否是人户分离 ，1：是")
     private String leave;
-
+    @ApiModelProperty(value = "文化程度")
     private String education;
-
+    @ApiModelProperty(value = "民族")
     private String nation;
-
+    @ApiModelProperty(value = "户籍地址")
     private String registryAddress;
-
+    @ApiModelProperty(value = "联系电话")
     private String phone;
-
+    @ApiModelProperty(value = "居住地址")
     private String liveAddress;
-
+    @ApiModelProperty(value = "婚姻")
     private String marriage;
-
+    @ApiModelProperty(value = "就业")
     private String job;
-
+    @ApiModelProperty(value = "工作地址")
     private String jobAddress;
-
+    @ApiModelProperty(value = "是否学生,1：是")
     private String student;
-
+    @ApiModelProperty(value = "学校地址")
     private String schoolAddress;
-
+    @ApiModelProperty(value = "助学结对")
     private String assistanceCouple;
-
+    @ApiModelProperty(value = "名称")
     private String coupleName;
-
+    @ApiModelProperty(value = "金额")
     private String coupleMoney;
-
+    @ApiModelProperty(value = "人员类别 刑释解教/戒毒")
     private String peopleType;
-
+    @ApiModelProperty(value = "户主姓名")
     private String homeName;
-
+    @ApiModelProperty(value = "是否是户主,1是")
     private String homeMan;
-
+    @ApiModelProperty(value = "总收入")
     private String inMoney;
-
+    @ApiModelProperty(value = "工资收入")
     private String workMoney;
-
+    @ApiModelProperty(value = "养老金")
     private String oldMoney;
-
+    @ApiModelProperty(value = "享受政策")
     private String enjoy;
-
+    @ApiModelProperty(value = "医疗保险")
     private String healthInsurance;
-
+    @ApiModelProperty(value = "居民保险")
     private String homeInsurance;
-
+    @ApiModelProperty(value = "互助帮扶保险")
     private String helpInsurance;
-
+    @ApiModelProperty(value = "城镇职工养老保险")
     private String workOldInsurance;
-
+    @ApiModelProperty(value = "健康状况")
     private String health;
-
+    @ApiModelProperty(value = "重大疾病 恶性肿瘤/尿毒症/精神病（下拉框）")
     private String bigSickness;
-
+    @ApiModelProperty(value = "残疾状况")
     private String poorHealth;
-
+    @ApiModelProperty(value = "残疾等级")
     private String poorRank;
-
+    @ApiModelProperty(value = "家庭信息id")
     private Integer homeConditionId;
-
+    @ApiModelProperty(value = "操作人")
     private String operateName;
-
+    @ApiModelProperty(value = "插入人id")
     private Integer insertUserId;
-
+    @ApiModelProperty(value = "创建时间")
     private Date created;
-
+    @ApiModelProperty(value = "修改时间")
     private Date modified;
-
-    private Integer enable;
+    @ApiModelProperty(value = "是否有效")
+    private Integer enable = 1;
 
     public Integer getId() {
         return id;

@@ -11,7 +11,10 @@ import org.apache.shiro.SecurityUtils;
 public class BaseController {
 
     public User getUser() {
-        User existUser = (User) SecurityUtils.getSubject().getPrincipal();
+        User existUser = new User();
+        existUser.setId(1);
+        //TODO 后期去除临时user信息
+//        User existUser = (User) SecurityUtils.getSubject().getPrincipal();
         if (existUser == null) {
             throw new RuntimeException("会话失效，请重新登陆");
         }

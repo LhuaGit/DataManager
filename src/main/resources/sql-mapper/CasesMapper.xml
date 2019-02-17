@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manager.dao.CasesMapper">
+    <resultMap id="BaseResultMap" type="com.manager.model.Cases">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="case_type" jdbcType="VARCHAR" property="caseType"/>
+        <result column="in_type" jdbcType="VARCHAR" property="inType"/>
+        <result column="plan" jdbcType="VARCHAR" property="plan"/>
+        <result column="get_type" jdbcType="VARCHAR" property="getType"/>
+        <result column="get_time" jdbcType="TIMESTAMP" property="getTime"/>
+        <result column="result" jdbcType="VARCHAR" property="result"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="home_id" jdbcType="INTEGER" property="homeId"/>
+        <result column="people_ids" jdbcType="VARCHAR" property="peopleIds"/>
+        <result column="created" jdbcType="TIMESTAMP" property="created"/>
+        <result column="modified" jdbcType="TIMESTAMP" property="modified"/>
+        <result column="enable" jdbcType="INTEGER" property="enable"/>
+        <result column="insert_user_id" jdbcType="INTEGER" property="insertUserId"/>
+        <result column="operate_name" jdbcType="VARCHAR" property="operateName"/>
+        <result column="neighborhood" jdbcType="VARCHAR" property="neighborhood"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, case_type, in_type, plan, get_type, get_time, result, status, home_id, people_ids, 
+    created, modified, enable, insert_user_id, operate_name
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from cases
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectByQuery" parameterType="com.manager.entity.CaseQuery" resultMap="BaseResultMap">
+        select
+        c.*,hc.neighborhood,pc.name
+        from cases c INNER JOIN home_condition hc on c.home_id = hc.id INNER JOIN people_condition pc ON c.people_ids =
+        pc.id
+        <where>
+            <if test="neighborhood != null">
+                hc.neighborhood = #{neighborhood}
+            </if>
+            <if test="name != null">
+                AND pc.name like concat('%', #{name}, '%')
+            </if>
+            <if test="homeType != null">
+                AND hc.home_type like #{homeType}
+            </if>
+        </where>
+    </select>
+    <select id="countByState" parameterType="com.manager.entity.CaseQuery" resultType="java.util.Map">
+        select
+        status, count(1)
+        from cases
+        <where>
+            <if test="createdStart != null">
+                <![CDATA[  created >= #createdStart# ]]>
+            </if>
+            <if test="createdEnd != null">
+                AND <![CDATA[  created <= #createdEnd# ]]>
+            </if>
+            <if test="operateName != null">
+                AND operate_name like concat('%', #{operateName}, '%')
+            </if>
+        </where>
+        GROUP BY status
+    </select>
+    <select id="countByCaseType" parameterType="com.manager.entity.CaseQuery" resultType="java.util.Map">
+        select
+        case_type, count(1)
+        from cases
+        <where>
+            <if test="createdStart != null">
+                <![CDATA[  created >= #createdStart# ]]>
+            </if>
+            <if test="createdEnd != null">
+                AND <![CDATA[  created <= #createdEnd# ]]>
+            </if>
+            <if test="operateName != null">
+                AND operate_name like concat('%', #{operateName}, '%')
+            </if>
+        </where>
+        GROUP BY case_type
+    </select>
+    <select id="countByInType" parameterType="com.manager.entity.CaseQuery" resultType="java.util.Map">
+        select
+        in_type, count(1)
+        from cases
+        <where>
+            <if test="createdStart != null">
+                <![CDATA[  created >= #createdStart# ]]>
+            </if>
+            <if test="createdEnd != null">
+                AND <![CDATA[  created <= #createdEnd# ]]>
+            </if>
+            <if test="operateName != null">
+                AND operate_name like concat('%', #{operateName}, '%')
+            </if>
+        </where>
+        GROUP BY in_type
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cases
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByPrimaryKeys" parameterType="java.lang.Integer">
+        delete from cases
+        where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id,jdbcType=INTEGER}
+        </foreach>
+    </delete>
+    <insert id="insert" parameterType="com.manager.model.Cases">
+    insert into cases (id, case_type, in_type, 
+      plan, get_type, get_time, 
+      result, status, home_id, 
+      people_ids, created, modified, 
+      enable, insert_user_id, operate_name
+      )
+    values (#{id,jdbcType=INTEGER}, #{caseType,jdbcType=VARCHAR}, #{inType,jdbcType=VARCHAR}, 
+      #{plan,jdbcType=VARCHAR}, #{getType,jdbcType=VARCHAR}, #{getTime,jdbcType=TIMESTAMP}, 
+      #{result,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{homeId,jdbcType=INTEGER}, 
+      #{peopleIds,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, #{modified,jdbcType=TIMESTAMP}, 
+      #{enable,jdbcType=INTEGER}, #{insertUserId,jdbcType=INTEGER}, #{operateName,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.manager.model.Cases">
+        insert into cases
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="caseType != null">
+                case_type,
+            </if>
+            <if test="inType != null">
+                in_type,
+            </if>
+            <if test="plan != null">
+                plan,
+            </if>
+            <if test="getType != null">
+                get_type,
+            </if>
+            <if test="getTime != null">
+                get_time,
+            </if>
+            <if test="result != null">
+                result,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="homeId != null">
+                home_id,
+            </if>
+            <if test="peopleIds != null">
+                people_ids,
+            </if>
+            <if test="created != null">
+                created,
+            </if>
+            <if test="modified != null">
+                modified,
+            </if>
+            <if test="enable != null">
+                enable,
+            </if>
+            <if test="insertUserId != null">
+                insert_user_id,
+            </if>
+            <if test="operateName != null">
+                operate_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="caseType != null">
+                #{caseType,jdbcType=VARCHAR},
+            </if>
+            <if test="inType != null">
+                #{inType,jdbcType=VARCHAR},
+            </if>
+            <if test="plan != null">
+                #{plan,jdbcType=VARCHAR},
+            </if>
+            <if test="getType != null">
+                #{getType,jdbcType=VARCHAR},
+            </if>
+            <if test="getTime != null">
+                #{getTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="result != null">
+                #{result,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="homeId != null">
+                #{homeId,jdbcType=INTEGER},
+            </if>
+            <if test="peopleIds != null">
+                #{peopleIds,jdbcType=VARCHAR},
+            </if>
+            <if test="created != null">
+                #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modified != null">
+                #{modified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enable != null">
+                #{enable,jdbcType=INTEGER},
+            </if>
+            <if test="insertUserId != null">
+                #{insertUserId,jdbcType=INTEGER},
+            </if>
+            <if test="operateName != null">
+                #{operateName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.manager.model.Cases">
+        update cases
+        <set>
+            <if test="caseType != null">
+                case_type = #{caseType,jdbcType=VARCHAR},
+            </if>
+            <if test="inType != null">
+                in_type = #{inType,jdbcType=VARCHAR},
+            </if>
+            <if test="plan != null">
+                plan = #{plan,jdbcType=VARCHAR},
+            </if>
+            <if test="getType != null">
+                get_type = #{getType,jdbcType=VARCHAR},
+            </if>
+            <if test="getTime != null">
+                get_time = #{getTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="result != null">
+                result = #{result,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="homeId != null">
+                home_id = #{homeId,jdbcType=INTEGER},
+            </if>
+            <if test="peopleIds != null">
+                people_ids = #{peopleIds,jdbcType=VARCHAR},
+            </if>
+            <if test="created != null">
+                created = #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modified != null">
+                modified = #{modified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enable != null">
+                enable = #{enable,jdbcType=INTEGER},
+            </if>
+            <if test="insertUserId != null">
+                insert_user_id = #{insertUserId,jdbcType=INTEGER},
+            </if>
+            <if test="operateName != null">
+                operate_name = #{operateName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.manager.model.Cases">
+    update cases
+    set case_type = #{caseType,jdbcType=VARCHAR},
+      in_type = #{inType,jdbcType=VARCHAR},
+      plan = #{plan,jdbcType=VARCHAR},
+      get_type = #{getType,jdbcType=VARCHAR},
+      get_time = #{getTime,jdbcType=TIMESTAMP},
+      result = #{result,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      home_id = #{homeId,jdbcType=INTEGER},
+      people_ids = #{peopleIds,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      modified = #{modified,jdbcType=TIMESTAMP},
+      enable = #{enable,jdbcType=INTEGER},
+      insert_user_id = #{insertUserId,jdbcType=INTEGER},
+      operate_name = #{operateName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="updCaseWithStatus" parameterType="com.manager.model.Cases">
+    update cases
+    set
+      status = #{status,jdbcType=VARCHAR},
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
